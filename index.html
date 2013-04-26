@@ -1,0 +1,787 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+	<title>Workshop :: Arduino</title>
+	<meta name="description" content="Introdução à computação física com Arduino">
+	<meta name="author" content="Sérgio Santos">
+
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+
+	<link href='http://fonts.googleapis.com/css?family=Arvo|Open+Sans|PT Serif' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="css/libs/deck.core.css">
+	<link rel="stylesheet" href="css/libs/deck.hash.css">
+	<link rel="stylesheet" href="css/libs/deck.menu.css">
+	<link rel="stylesheet" href="css/libs/deck.status.css">
+	<link rel="stylesheet" href="css/libs/fade.css">
+	<link rel="stylesheet" href="css/libs/shCore.css">
+	<link rel="stylesheet" href="css/libs/shThemeArduino.css">
+	<link rel="stylesheet" href="css/workshop.css">
+
+	<script src="js/libs/modernizr.custom.js"></script>
+</head>
+<body class="deck-container">
+
+	<!-- 
+	=Main title
+	-->
+	<section class="slide" id="title">
+		<h1>Workshop</h1>
+		<h2>Introdução à Computação Física<br /> com Arduino</h2>
+	</section>
+
+	<!-- 
+	=Agenda
+	-->
+	<section class="slide" id="agenda">
+		<h2>Agenda</h2>
+		<ol>
+			<li class="slide" id="kit">KIT</li>
+			<li class="slide" id="arduino">Arduino</li>
+			<li class="slide" id="electronics">Electrónica</li>
+			<li class="slide" id="coding">Programação</li>
+			<li class="slide" id="sensors-actuators">Sensores e actuadores</li>
+			<li class="slide" id="serial-monitor">Serial Monitor</li>
+		</ol>
+	</section>
+
+	<!-- 
+	=KIT
+	-->
+	<section class="slide" id="kit">
+		<h1>KIT</h1>
+	</section>
+
+	<section class="slide" id="contents">
+		<h2>Conteúdo</h2>
+		<ul>
+			<li>Arduino Uno</li>
+			<li>Breadboard</li>
+			<li>LEDs</li>
+			<li>Potenciómetros</li>
+			<li>Interruptores</li>
+			<li>Sensores (inclinação, LDR, temperatura, piezo)</li>
+			<li>Buzzer</li>
+			<li>Diodo</li>
+			<li>Motor</li>
+			<li>Resistências (150, 220, 330, 1K, 10K, 2M)</li>
+			<li>Fio condutor</li>
+		</ul>
+	</section>
+
+	<!-- 
+	=Arduino
+	-->
+	<section class="slide" id="arduino">
+		<h1>Arduino</h1>
+	</section>
+
+	<section class="slide" id="what-is">
+		<h2>O que é o Arduino</h2>
+		<ul>
+			<li class="slide" id="platform">Plataforma de prototipagem electrónica</li>
+			<li class="slide" id="designers">Artistas, designers, tinkers, engenheiros, ...</li>
+			<li class="slide" id="purpose">Criar objectos e ambientes interactivos</li>
+			<li class="slide" id="open-source">Open-source</li>
+			<li class="slide" id="low-cost">Baixo custo</li>
+			<li class="slide" id="standalone">Pode operar sem a presença de um computador</li>
+			<li class="slide" id="shields">Expansão "ilimitada" através de shields</li>
+			<li class="slide" id="language">Linguagem de programação simples</li>
+			<li class="slide" id="processing">Interacção com programas Java, Flash, Processing, ...</li>
+		<ul>
+	</section>
+
+	<section class="slide" id="hardware">
+		<h2>Arduino</h2>
+		<div class="col-left">
+			<ul>
+				<li>Microcontrolador: ATmega328</li>
+				<li>Tensão de operação: 5V</li>
+				<li>Tensão de input: 7-12V <br />(limite: 6-20V)</li>
+				<li>
+					Inputs/Outputs digitais: 14 <br />
+					(pins 0-13)
+				</li>
+				<li>
+					Inputs analógicos: 6 <br />
+					(pins 0-5)
+				</li>
+				<li>
+					Outputs analógicos: 6 (PWM) <br />
+					(pins 3, 5, 6, 9, 10 e 11)
+				</li>
+			</ul>
+		</div>
+		<div class="col-right">
+			<img src="images/arduino.jpg" alt="Arduino Uno" />
+		</div>
+	</section>
+
+	<section class="slide" id="hardware-part-2">
+		<h2>Arduino</h2>
+		<div class="col-left">
+			<ul>
+				<li>Corrente DC por pin de I/O: 40 mA</li>
+				<li>Corrente DC: 50 mA</li>
+				<li>
+					Memória flash: 32KB<br />
+					0.5 KB são do bootloader
+				</li>
+				<li>Porta USB</li>
+				<li>Botão para reset</li>
+				<li>LEDs de estado</li>
+				<li>Velocidade de relógio: 16MHz</li>
+			</ul>
+		</div>
+		<div class="col-right">
+			<img src="images/arduino.jpg" alt="Arduino Uno" />
+		</div>
+	</section>
+
+	<section class="slide" id="lifecycle">
+		<h2>Ciclo de vida</h2>
+		<img src="images/lifecycle.png" alt="Ciclo de vida" />
+	</section>
+
+	<!-- 
+	=Electrónica
+	-->
+	<section class="slide" id="electronics">
+		<h1>Electrónica</h1>
+	</section>
+
+	<section class="slide" id="ohms-law">
+		<h2>Lei de Ohm</h2>
+		<div class="col-left">
+			<p>Relaciona as três grandezas fundamentais da electricidade:</p>
+			<ul>
+				<li class="slide" id="ohm">Resistência (Ohm)</li>
+				<li class="slide" id="volt">Diferença de potencial (Volt)</li>
+				<li class="slide" id="ampere">Intensidade da corrente (Ampere)</li>
+			</ul>
+			<ul class="slide" id="formulas">
+				<li>R = V / I</li>
+				<li>V = R * I</li>
+				<li>I = V / R</li>
+			</ul>
+			<p class="slide" id="watt">Potência eléctrica: P = V * I (Watt)</p>
+		</div>
+		<div class="col-right">
+			<img src="images/ohms_law_triangle.png" alt="Triângulo da Lei de Ohm" />
+		</div>
+	</section>
+
+	<section class="slide" id="symbols">
+		<h2>Símbolos</h2>
+		<img src="images/symbols.png" alt="Símbolos" />
+	</section>
+
+	<section class="slide" id="leds-diodes">
+		<h2>LEDs e Díodos</h2>
+		<div class="col-left">
+			<img src="images/led.jpg" alt="LED" />
+		</div>
+		<div class="col-right">
+			<img src="images/diode.jpg" alt="Díodo" />
+		</div>
+		<p class="slide" id="cathode-question">Qual é o pólo negativo?</p>
+		<div class="col-left">
+			<ul>
+				<li class="slide" id="led-answer1">A perna mais pequena</li>
+				<li class="slide" id="led-answer2">O lado do LED que está cortado</li>
+				<li class="slide" id="led-answer3">O maior filamento metálico no interior do LED</span></li>
+			</ul>
+		</div>
+		<div class="col-right">
+			<ul>
+				<li class="slide" id="diode-answer">O lado da risca</li>
+			</ul>
+		</div>
+	</section>
+
+	<section class="slide" id="resistors">
+		<h2>Resistências</h2>
+		<div class="col-left">
+			<table>
+				<thead>
+					<tr><td>Cor</td><td>Valor</td></tr>
+				</thead>
+				<tbody>
+					<tr><td>Preto</td><td>0</td></tr>
+					<tr><td>Castanho</td><td>1</td></tr>
+					<tr><td>Vermelho</td><td>2</td></tr>
+					<tr><td>Laranja</td><td>3</td></tr>
+					<tr><td>Amarelo</td><td>4</td></tr>
+					<tr><td>Verde</td><td>5</td></tr>
+					<tr><td>Azul</td><td>6</td></tr>
+					<tr><td>Violeta</td><td>7</td></tr>
+					<tr><td>Cinzento</td><td>8</td></tr>
+					<tr><td>Branco</td><td>9</td></tr>
+					<tr><td>Prateado</td><td>10%</td></tr>
+					<tr><td>Dourado</td><td>5%</td></tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="col-right">
+			<img src="images/10kresistor.jpg" alt="Resistência 10K" />
+			<p class="slide" id="resistor-question">Qual é o valor da resistência?</p>
+			<p class="slide" id="resistor-read">Castanho | Preto | Laranja | Dourado</p>
+			<p class="slide" id="resistor-answer">10.000 Ohms (5% variação) => 10K Ohms</p>
+		</div>
+	</section>
+
+	<section class="slide" id="breadboard">
+		<h2>Breadboard</h2>
+		<img src="images/breadboard.png" alt="Breadboard" />
+	</section>
+
+	<!-- 
+	=Programação
+	-->
+	<section class="slide" id="coding">
+		<h1>Programação</h1>
+	</section>
+
+	<section class="slide" id="ide">
+		<h2>IDE</h2>
+		<div class="col-left">
+			<ul>
+				<li>Compilar</li>
+				<li>Parar compilação</li>
+				<li>Novo</li>
+				<li>Abrir</li>
+				<li>Guardar</li>
+				<li>Upload</li>
+				<li>Serial monitor</li>
+				<li>Janela de estado</li>
+			</ul>
+		</div>
+		<div class="col-right">
+			<img src="images/ide.png" alt="IDE" />
+		</div>
+	</section>
+
+	<section class="slide" id="structure">
+		<h2>Estrutura do sketch</h2>
+		<pre class="brush: arduino">  
+			// Declaração de bibliotecas
+			#include "Client.h"
+
+			// Declaração de variáveis globais
+			int i = 0;
+
+			void setup()
+			{
+				// ...
+			}
+
+			void loop() 
+			{
+				// ...
+			}</pre>
+	</section>
+
+	<section class="slide" id="structure-step-by-step">
+		<h2>Estrutura do sketch</h2>
+		<h3>setup()</h3>
+		<ul>
+			<li class="slide" id="setup1">Executado somente 1x no início</li>
+			<li class="slide" id="setup2">Inicialização de variáveis</li>
+			<li class="slide" id="setup3">Definição de pins</li>
+			<li class="slide" id="setup4">Inicialização da comunicação de série</li>
+		</ul>
+		<h3 class="slide" id="loop">loop()</h3>
+		<ul>
+			<li class="slide" id="loop1">Executado continuamente</li>
+			<li class="slide" id="loop2">Definição do comportamento do equipamento</li>
+		</ul>
+	</section>
+
+	<section class="slide" id="methods">
+		<h2>Métodos</h2>
+		<ul>
+			<li>pinMode(pin, modo) – definir um pin como INPUT ou OUTPUT</li>
+			<li>digitalWrite(pin, valor) – atribuir um valor ao pin (LOW/HIGH)</li>
+			<li>digitalRead(pin) – ler o valor do pin (LOW/HIGH)</li>
+			<li>analogWrite(pin, valor) – atribuir um valor aos pins PWM (0/255)</li>
+			<li>analogRead(pin) – ler o valor do pin analógico (0/1023)</li>
+			<li>delay(ms) – parar o processamento por tempo determinado (msegs)</li>
+			<li>millis() – ler o tempo de execução do Arduino (reset automático ao fim de 5 dias +/-)</li>
+			<li>...</li>
+		</ul>
+		<p class="align-right"><a href="http://arduino.cc/en/Reference/HomePage" alt="API">http://arduino.cc/en/Reference/HomePage</a></p>
+	</section>
+
+	<section class="slide" id="flow-control">
+		<h2>Controlo de fluxo</h2>
+		<ul>
+			<li>if...else</li>
+			<li>for</li>
+			<li>switch case</li>
+			<li>while</li>
+			<li>do...while</li>
+			<li>...</li>
+		</ul>
+		<p class="align-right"><a href="http://arduino.cc/en/Reference/HomePage" alt="API">http://arduino.cc/en/Reference/HomePage</a></p>
+	</section>
+
+	<section class="slide" id="hello-world-breadboard">
+		<h2>Hello World</h2>
+		<img src="sketches/sketch1b.png" alt="Blinking LED" />
+	</section>
+
+	<section class="slide" id="hello-world-questions">
+		<h2>Hello World</h2>
+		<div class="col-left">
+			<p>Qual deverá ser o valor da resistência?</p>
+			<ul>
+				<li class="slide" id="answer1">Arduino (5V) - LED (2V)</li>
+				<li class="slide" id="answer3">LED = 20-50mA => 0,02A</li>
+				<li class="slide" id="answer4">R = 3 / 0,02 = 150 Ohms &cong; 220 Ohms</li>
+			</ul>
+		</div>
+		<div class="col-right slide" id="led-volts">
+			<p>Atenção que nem todos os LEDs têm a mesma voltagem:</p>
+			<ul>
+				<li>Red - 2.0V</li>
+				<li>Green - 3.2V</li>
+				<li>Blue - 3.2V</li>
+			</ul>
+		</div>
+	</section>
+
+	<section class="slide" id="hello-world-schema">
+		<h2>Hello World</h2>
+		<img src="sketches/sketch1s.png" alt="Blinking LED" />
+	</section>
+
+	<section class="slide" id="hello-world-code">
+		<h2>Hello World</h2>
+		<pre class="brush: arduino">  
+			int LED = 9;
+
+			void setup()
+			{
+				pinMode(LED, OUTPUT);
+			}
+
+			void loop() 
+			{
+				digitalWrite(LED, HIGH);
+				delay(1000);
+				digitalWrite(LED, LOW);
+				delay(1000);
+			}</pre>
+	</section>
+
+	<!-- 
+	=Sensores e Actuadores
+	-->
+	<section class="slide" id="sensors-actuators">
+		<h1>Sensores e Actuadores</h1>
+	</section>
+
+	<section class="slide" id="sensors">
+		<h2>Tipos</h2>
+		<div class="col-left">
+			<h3>Sensores (Inputs)</h3>
+			<ul>
+				<li>Som: microfone</li>
+				<li>Luz: LDR</li>
+				<li>Calor: thermistor</li>
+				<li>Movimento: interruptores, sensores de pressão, acelerómetros</li>
+				<li>Distância: sonar</li>
+			</ul>
+		</div>
+		<div class="col-right slide" id="outputs">
+			<h3>Actuadores (Outputs)</h3>
+			<ul>
+				<li>Som: altifalante</li>
+				<li>Luz: LED</li>
+				<li>Movimento: motores, servos</li>
+				<li>Impressora 3D</li>
+			</ul>
+		</div>
+		<div class="align-center clear">
+			<p class="slide" id="digital-analog">Os sensores e actuadores podem ser digitais ou analógicos</p>
+		</div>
+	</section>
+
+	<section class="slide" id="digital-input">
+		<h2>Digital Input</h2>
+		<div class="col-left">
+			<img src="images/push-button.jpg" alt="Push Button" />
+		</div>
+		<div class="col-right">
+			<p>Digital – ON/OFF, HIGH/LOW, 5V/0V</p> 
+			<img src="images/digital_input.png" alt="Digital Input" />
+			<p class="slide" id="vice-versa">...ou vice-versa</p>
+		</div>
+	</section>
+
+	<section class="slide" id="pushbutton-breadboard">
+		<h2>Pushbutton LED</h2>
+		<img src="sketches/sketch2b.png" alt="Pushbutton LED" />
+	</section>
+
+	<section class="slide" id="pushbutton-schema">
+		<h2>Pushbutton LED</h2>
+		<img src="sketches/sketch2s.png" alt="Pushbutton LED" />
+	</section>
+
+	<section class="slide" id="pushbutton-code">
+		<h2>Pushbutton LED</h2>
+		<pre class="brush: arduino">  
+			const int buttonPin = 7;
+			const int ledPin =  9;
+
+			int buttonState = 0;
+
+			void setup() {
+				pinMode(ledPin, OUTPUT);
+				pinMode(buttonPin, INPUT);     
+			}
+
+			void loop(){
+				buttonState = digitalRead(buttonPin);
+
+				if (buttonState == HIGH) {     
+					digitalWrite(ledPin, HIGH);  
+				} 
+				else {
+					digitalWrite(ledPin, LOW); 
+				}
+			}</pre>
+	</section>
+
+	<section class="slide" id="pushbutton-breadboard">
+		<h2>Pushbutton LED</h2>
+		<img src="sketches/sketch2bv2.png" alt="Pushbutton LED" />
+		<p>O que acontecerá se trocarmos a resistência para o pólo positivo? <span class="slide" id="answer">Lógica invertida</span>
+		</p>
+	</section>
+
+	<section class="slide" id="analog-output">
+		<h2>Analog Output</h2>
+		<p>E se quisermos variar automaticamente a intensidade de luz de um LED?</p>
+		<p class="slide" id="anwser">Usamos um pin PWM</p>
+		<div class="slide" id="pwm">
+			<div class="col-left">
+				<p>PWM - técnica para conversão digital/analógico usando apenas um bit, onde é gerada uma forma de onda quadrada onde o tempo em que esta forma fica em HIGH (5V) define o valor da saída</p>
+			</div>
+			<div class="col-right">
+				<img src="images/analog_output.gif" alt="Analog Output" />
+			</div>
+		</div>
+	</section>
+
+	<section class="slide" id="mood-lamp-led">
+		<h2>Mood Lamp</h2>
+		<img src="images/led_rgb.jpeg" alt="LED RGB" />
+		<div class="col-left">
+			<h3>LED RGB</h3>
+			<ul>
+				<li>Red</li>
+				<li>Ground</li>
+				<li>Green</li>
+				<li>Blue</li>
+			</ul>
+		</div>
+		<div class="col-right">
+			<p class="slide" id="cathode-question">Qual é o pólo negativo?</p>
+			<p class="slide" id="answer">A perna maior</p>
+		</div>
+	</section>
+
+	<section class="slide" id="mood-lamp-breadboard">
+		<h2>Mood Lamp</h2>
+		<img src="sketches/sketch3b.png" alt="Mood Lamp" />
+	</section>
+
+	<section class="slide" id="mood-lamp-code">
+		<h2>Mood Lamp</h2>
+		<pre class="brush: arduino"> 
+		int leds[] = {11, 10, 9};
+
+		void setup() {
+			for(int i = 0; i < 3; i++) {
+				pinMode(leds[i], OUTPUT);
+			}
+		}
+
+		void loop() {
+			for(int i = 0; i < 3; i++) {  
+				for(int j = 0; j < 256; j++) {
+					analogWrite(leds[i], j);
+					delay(10);
+				}
+				digitalWrite(leds[i], LOW);
+			}
+		}</pre>
+	</section>
+
+	<section class="slide" id="analog-input">
+		<h2>Analog Input</h2>
+		<p>E se quisermos controlar a intensidade de luz de um LED?</p>
+		<p class="slide" id="answer">Usamos um pin ADC</p>
+		<div class="slide" id="adc">
+			<div class="col-left">
+				<ul>
+					<li>Converte sinal analógico em digital</li>
+					<li class="slide" id="inputs">Arduino tem 6 inputs ADC</li>
+					<li class="slide" id="10bits">Conversor tem 10 bits de resolução <br />(0-1023)</li>
+					<li class="slide" id="volts">Valores variam entre 0 e 5 volts</li>
+				</ul>
+			</div>
+			<div class="col-right">
+				<img src="images/adc.jpg" alt="ADC" />
+			</div>
+		</div>
+	</section>
+
+	<section class="slide" id="potentiometer-breadboard">
+		<h2>Potenciómetro</h2>
+		<img src="sketches/sketch4b.png" alt="Potentiometer" />
+		<p class="slide" id="question">Mas o input varia entre 0-1023 e o output entre 0-255...</p>
+		<p class="slide" id="answer">map(value, fromLow, fromHigh, toLow, toHigh)</p>
+	</section>
+
+	<section class="slide" id="potentiometer-code">
+		<h2>Potenciómetro</h2>
+		<pre class="brush: arduino">
+		int sensorPin = 0;
+		int ledPin = 9;
+		int sensorValue = 0;
+		int valMap = 0;
+
+		void setup() {
+			pinMode(ledPin, OUTPUT);
+		}
+
+		void loop() {
+			sensorValue = analogRead(sensorPin); // 0-1023
+			valMap = map(sensorValue, 0, 1023, 0, 255);
+			analogWrite(ledPin, valMap);
+		}</pre>
+	</section>
+
+	<!-- 
+	=Serial Monitor
+	-->
+	<section class="slide" id="serial-monitor">
+		<h1>Serial Monitor</h1>
+	</section>
+
+	<section class="slide" id="methods">
+		<h2>Métodos</h2>
+		<ul>
+			<li>Serial.begin(velocidade) – inicializar a porta Serial</li>
+			<li>Serial.println(valor) – enviar dados para a porta Serial</li>
+			<li>Serial.println(valor, formato) – enviar dados para a porta Serial</li>
+			<li>Serial.read() – ler dados da porta Serial</li>
+		</ul>
+	</section>
+
+	<section class="slide" id="arduino-pc">
+		<h2>Arduino -> PC</h2>
+		<pre class="brush: arduino">
+		int LED = 9;
+		int val = 123;
+
+		void setup() {
+			pinMode(LED, OUTPUT);
+			Serial.begin(9600);
+		}
+
+		void loop() {
+			Serial.print(val);       // envia ASCII "123"
+			Serial.print(val, DEC);  // igual ao de cima
+			Serial.print(val, HEX);  // envia ASCII hexadécimal "7B"
+			Serial.print(val, BIN);  // envia ASCII binário "01111011"
+			Serial.print(val, BYTE); // envia 1 byte
+		  
+			digitalWrite(LED, HIGH);
+			delay(1000);
+			digitalWrite(LED, LOW);
+			delay(1000);
+		}</pre>
+	</section>
+
+	<section class="slide" id="pc-arduino">
+		<h2>PC -> Arduino</h2>
+		<pre class="brush: arduino">
+		int LED = 9;
+		int val = 0;
+
+		void setup() {
+			pinMode(LED, OUTPUT);
+			Serial.begin(9600);
+		}
+
+		void loop() {
+			val = Serial.read();
+			if(val != -1) {
+				if(val == 'H') {
+		    		digitalWrite(LED, HIGH);
+					delay(1000);
+					digitalWrite(LED, LOW);
+					delay(1000);
+				}
+			}
+		}</pre>
+		<p class="slide" id="question">O que é suposto acontecer?</p>
+	</section>
+
+	<section class="slide" id="ldr-breadboard">
+		<h2>LDR</h2>
+		<div class="col-left">
+			<img src="images/ldr.jpg" alt="LDR" />
+		</div>
+		<div class="col-right">
+			<img src="images/ldr_10k.png" alt="LDR 10K Ohms" />
+		</div>
+		<p class="slide" id="question">Quanto menos luz houver maior luminosidade terá o LED</p>
+		<p class="slide" id="values">Usar o Serial Monitor para identificar qual o intervalo de valores de actuação do LDR</p>
+	</section>
+
+	<section class="slide" id="ldr-breadboard">
+		<h2>LDR</h2>
+		<img src="sketches/sketch5b.png" alt="LDR" />
+	</section>
+
+	<section class="slide" id="ldr-code">
+		<h2>LDR</h2>
+		<pre class="brush: arduino">
+		int ledPin = 9;
+		int sensorPin = 0;
+		int sensorValue = 0;
+		int valMap = 0;
+
+		void setup() {
+			pinMode(ledPin, OUTPUT);
+		}
+
+		void loop() {
+			sensorValue = analogRead(sensorPin);
+			valMap = map(sensorValue, 200, 600, 255, 0);  
+			analogWrite(ledPin, valMap);
+		}
+		</pre>
+	</section>
+
+	<section class="slide" id="piezo">
+		<h2>Piezo Buzzer</h2>
+		<img src="images/piezo_buzzer.jpg" alt="Piezo Buzzer" />
+		<ul>
+			<li>tone(pin, frequência) - frequência varia entre 0 e 65535</li>
+			<li>tone(pin, frequência, duração) - duração em msegs</li>
+			<li>noTone(pin)</li>
+		</ul>
+		<ul>
+			<li class="slide" id="just-one">Só é possível produzir um som de cada vez</li>
+			<li class="slide" id="no-tone">Chamar noTone() sempre que alterarmos o pin de output</li>
+		</ul>
+	</section>
+
+	<section class="slide" id="piezo-breadboard">
+		<h2>Piezo Buzzer</h2>
+		<img src="sketches/sketch6b.png" alt="Piezo" />
+	</section>
+
+	<section class="slide" id="piezo-code">
+		<h2>Piezo Buzzer</h2>
+		<pre class="brush: arduino">
+		int sensorPin = 0;
+		int sensorValue = 0;
+		int PIEZO = 8;
+		int valMap = 0;
+
+		void setup() {
+			Serial.begin(9600);
+		}
+
+		void loop() {
+			sensorValueR = analogRead(sensorPin);
+			valMap = map(sensorValue, 400, 1000, 30, 1000);
+			Serial.println(valMap);
+			tone(PIEZO, valMap, 1000);
+		}</pre>
+	</section>
+
+	<section class="slide" id="music">
+		<h2>Música</h2>
+		<pre class="brush: arduino">
+		#include "pitches.h"
+		int melody[] = {NOTE_C4, NOTE_G3, NOTE_G3, NOTE_A3, NOTE_G3, 0, NOTE_B3, NOTE_C4};
+
+		// note durations: 4 = quarter note, 8 = eighth note, etc.:
+		int noteDurations[] = { 4, 8, 8, 4, 4, 4, 4, 4 };
+
+		void setup() {
+			for (int thisNote = 0; thisNote < 8; thisNote++) {
+
+			    // to calculate the note duration, take one second 
+			    // divided by the note type.
+			    // e.g. quarter note = 1000 / 4, eighth note = 1000/8, etc.
+			    int noteDuration = 1000/noteDurations[thisNote];
+			    tone(8, melody[thisNote],noteDuration);
+
+			    int pauseBetweenNotes = noteDuration * 1.30;
+			    delay(pauseBetweenNotes);
+			    noTone(8);
+			}
+		}
+
+		void loop() {
+		}</pre>
+	</section>
+
+	<section class="slide" id="and-now">
+		<h2>E agora?</h2>
+		<ul>
+			<li>Pressure sensor</li>
+			<li>Tilt sensor</li>
+			<li>Traffic light</li>
+			<li>DC motor</li>
+		</ul>
+	</section>
+
+	<!-- 
+	=End title
+	-->
+	<section class="slide" id="before-ending">
+		<blockquote cite="http://arduino.cc">
+			<p>A engenharia clássica utiliza um processo estrito para ir de A a B, enquanto o método Arduino se baseia em perdermo-nos pelo caminho e encontrarmos C.</p>
+			<p><cite>Massimo Banzi</cite></p>
+		</blockquote>
+	</section>
+ 
+	<section class="slide" id="the-end">
+		<h1>Obrigado</h1>
+	</section>
+
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+	<script>window.jQuery || document.write('<script src="js/libs/jquery-1.7.min.js"><\/script>')</script>
+	<script src="js/libs/deck.core.js"></script>
+	<script src="js/libs/deck.hash.js"></script>
+	<script src="js/libs/deck.menu.js"></script>
+	<script src="js/libs/deck.status.js"></script>
+	<script src="js/libs/shCore.js"></script>
+	<script src="js/libs/shBrushArduino.js"></script>
+	<script src="js/workshop.js"></script>
+
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-23821094-7']);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
+</body>
+</html>

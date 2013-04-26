@@ -1,0 +1,51 @@
+/*
+Description: Introdução à computação física com Arduino
+Version: 1.0
+Author: Sérgio Santos
+Author URI: http://www.sergiosantos.me
+Author Email: hello@sergiosantos.me
+*/
+
+/* Reset ================================================================================= */
+* { margin:0; padding:0; }
+.csstransitions.csstransforms .deck-container:not(.deck-menu) > .slide .deck-before, 
+.csstransitions.csstransforms .deck-container:not(.deck-menu) > .slide .deck-previous { opacity: 1; }
+
+/* Layout ================================================================================ */
+.col-left 				{ width: 50%; float: left; padding:0 0 1px; }
+.col-right 				{ width: 50%; float: right; padding:0 0 1px; }
+.align-right			{ float: right; }
+.align-center			{ text-align: center; }
+.clear 					{ clear: both; }
+
+/* Global Styles ========================================================================= */
+.deck-container 		{ font: 1.5em 'Open Sans', Helvetica, Arial, sans-serif; color: #444; }
+.deck-container h1 		{ font: 4.8em 'Arvo', Georgia, Times, serif; color: #000; line-height: 1.15; }
+.deck-container h2		{ font: 1.8em 'Open Sans', Helvetica, Arial, sans-serif; line-height: 1.5; color: #555; margin-bottom: 1em; border-bottom: 2px solid #d2d2d2; }
+.deck-container h3		{ font: 1.3em 'Open Sans', Helvetica, Arial, sans-serif; line-height: 1.25; color: #444; margin-bottom: .45em; }
+.deck-container blockquote { font-family: 'PT Serif', Georgia, Times, serif; }
+.deck-container cite	{ font: .5em 'Open Sans', Helvetica, Arial, sans-serif; }
+.deck-container ul li 	{ margin-left: -20px; }
+.deck-container ol li 	{ margin-left: -15px; }
+
+/* Slides ================================================================================ */
+/* Title */
+#title h1 				{ top: 40%; text-align: center; }
+#title h2 				{ position: absolute; top: 55%; right: 0; left: 0; padding: 0 48px; border: 0; text-align: center; }
+
+/* Arduino */
+#hardware img, 
+#hardware-part-2 img 	{ margin-top: 45px; }
+
+/* Electronics */
+#ohms-law img 			{ margin-top: 50px; }
+#resistors table 		{ margin-left: 35px; font-size: 0.8em; }
+#resistors table thead tr { background-color: #ccc; border-bottom: 1px solid #000; }
+#resistors table tr 	{ border-bottom: 1px solid #ccc; }
+#resistors table td 	{ padding: 3px 60px 2px; text-align: center; }
+#analog-output img 		{ margin-top: -55px;}
+
+/* End Title */
+#before-ending blockquote { position: absolute; top: 25%; padding: .7em 1.5em .5em; font-size: 2em; }
+#before-ending blockquote:before { content: "“"; position: absolute; top: 0; left: 0; font-size: 3em; line-height: 1; z-index: 1; }
+#end h1 				{ top: 50%; text-align: center; }
