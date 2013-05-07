@@ -1,8 +1,8 @@
-## Workshop de Arduino
+# Workshop de Arduino
 
 [Slides](http://s3rgiosan.github.com/workshop-arduino/) do meu Workshop de Introdução à computação física com Arduino.
 
-### Agenda
+## Agenda
 1. KIT
 2. Arduino
 3. Electrónica
